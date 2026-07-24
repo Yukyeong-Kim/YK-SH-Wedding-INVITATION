@@ -10,16 +10,16 @@
     <meta property="og:image" content="19.jpeg">
     
     <title>이시형 & 김유경 모바일 청첩장</title>
-    <!-- 폰트: 한글(고딕체: Noto Sans KR), 영문(코모란트 가라몬드), 영문이름(필기체: Great Vibes) -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Noto+Sans+KR:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- 폰트: 한글(명조체: 고운바탕), 영문(코모란트 가라몬드), 영문이름(필기체: Great Vibes) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Gowun+Batang:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #f6f4ee; 
             --text-color: #3b3a37;
             --point-color: #8c8c8c;
             --border-color: #dcd7ce;
-            /* 폰트 변수 정의 */
-            --font-gothic-ko: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            /* 폰트 변수 정의 (사진에 맞춰 한글을 명조체로 변경) */
+            --font-serif-ko: 'Gowun Batang', serif;
             --font-serif-en: 'Cormorant Garamond', serif;
             --font-script-en: 'Daniella', 'Great Vibes', cursive; /* Daniella 폰트 및 필기체 대체 폰트 */
         }
@@ -27,8 +27,8 @@
         body {
             margin: 0; padding: 0;
             background-color: #ebebeb;
-            /* 전체 글씨체 고딕으로 통일 */
-            font-family: var(--font-gothic-ko);
+            /* 전체 글씨체 명조체로 통일 */
+            font-family: var(--font-serif-ko);
             color: var(--text-color);
             overflow-x: hidden;
             font-weight: 400;
@@ -78,13 +78,13 @@
         /* 메인 섹션은 측면 패딩 제거 */
         .main-section-no-padding { padding-left: 0; padding-right: 0; }
 
-        /* 영문 이름 스타일 수정 (필기체 느낌으로 변경) */
+        /* 영문 이름 스타일 수정 (참조 이미지에 맞춰 크기 축소 및 색상 완화) */
         .names-stylized {
             font-family: var(--font-script-en);
-            font-size: 55px; /* 필기체는 조금 더 커야 예쁩니다 */
-            color: #2c2b29;
-            margin: 10px 0;
-            letter-spacing: 2px;
+            font-size: 42px; /* 55px에서 42px로 축소 */
+            color: #666666; /* 덜 튀도록 부드러운 짙은 회색으로 변경 */
+            margin: 15px 0;
+            letter-spacing: 1px;
             font-weight: normal;
         }
 
@@ -101,7 +101,7 @@
         .cal-month { font-size: 24px; margin-bottom: 20px; font-variant: small-caps; letter-spacing: 2px; }
         .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; font-size: 14px; color: #666; }
         .cal-grid .d-day { background-color: #c2b8a3; border-radius: 50%; width: 26px; height: 26px; line-height: 26px; margin: 0 auto; color: #fff; font-weight: bold; }
-        .d-day-counter { margin-top: 30px; font-size: 15px; letter-spacing: 1px; color: #7a7364; font-family: var(--font-gothic-ko); }
+        .d-day-counter { margin-top: 30px; font-size: 15px; letter-spacing: 1px; color: #7a7364; font-family: var(--font-serif-ko); }
         
         /* 오시는 길 정보 전체를 클릭 가능하게 수정 */
         .location-info-clickable {
@@ -119,7 +119,7 @@
 
         .account-btn {
             width: 100%; padding: 15px; margin-bottom: 10px; background-color: transparent;
-            border: 1px solid var(--border-color); text-align: left; font-family: var(--font-gothic-ko);
+            border: 1px solid var(--border-color); text-align: left; font-family: var(--font-serif-ko);
             cursor: pointer; display: flex; justify-content: space-between; color: var(--text-color); font-size: 15px;
         }
         .account-content {
@@ -131,7 +131,7 @@
             border-bottom: 1px dashed #dcd7ce; padding: 12px 0;
         }
         .acc-row:last-child { border-bottom: none; }
-        .acc-name { font-weight: 500; margin-bottom: 4px; }
+        .acc-name { font-weight: 700; margin-bottom: 4px; }
         .acc-num { color: #666; }
 
         /* 갤러리 슬라이드 스타일 */
@@ -185,7 +185,7 @@
         .lightbox.active { display: flex; }
         .lightbox img { max-width: 95%; max-height: 85vh; object-fit: contain; user-select: none; }
         .lightbox-close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 30px; cursor: pointer; padding: 10px; }
-        .lightbox-hint { color: #aaa; font-size: 12px; margin-top: 15px; font-family: var(--font-gothic-ko);}
+        .lightbox-hint { color: #aaa; font-size: 12px; margin-top: 15px; font-family: var(--font-serif-ko);}
 
     </style>
 </head>
