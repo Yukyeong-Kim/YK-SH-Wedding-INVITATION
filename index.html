@@ -64,6 +64,14 @@
             font-variant: small-caps; 
             font-size: 18px; letter-spacing: 4px; margin-bottom: 40px; color: #5a5750; 
         }
+        
+        /* 한글 전용 섹션 타이틀 (강제 적용) */
+        .section-title.ko-title {
+            font-family: 'Gowun Batang', serif !important;
+            font-size: 20px !important;
+            letter-spacing: 2px !important;
+            font-weight: 400 !important;
+        }
 
         /* 메인 사진: 가로 화면에 꽉 차게 */
         .main-photo-full-width {
@@ -117,12 +125,14 @@
 
         .account-btn {
             width: 100%; padding: 15px; margin-bottom: 10px; background-color: transparent;
-            border: 1px solid var(--border-color); text-align: left; font-family: var(--font-serif-ko);
+            border: 1px solid var(--border-color); text-align: left; 
+            font-family: 'Gowun Batang', serif !important; /* 강제 적용 */
             cursor: pointer; display: flex; justify-content: space-between; color: var(--text-color); font-size: 15px;
         }
         .account-content {
             display: none; padding: 20px; background-color: rgba(255,255,255,0.4); border: 1px solid var(--border-color);
             border-top: none; margin-top: -10px; margin-bottom: 20px; font-size: 14px; text-align: left; line-height: 1.8;
+            font-family: 'Gowun Batang', serif !important; /* 강제 적용 */
         }
         .acc-row {
             display: flex; justify-content: space-between; align-items: center;
@@ -248,9 +258,9 @@
 
     <!-- 3. 계좌번호 -->
     <div class="section">
-        <!-- 마음 전하실 곳 텍스트 글씨체를 고운바탕체로 강제 적용 -->
-        <div class="section-title" style="font-family: var(--font-serif-ko); font-weight: 700; letter-spacing: 2px;">마음 전하실 곳 🫶🏼</div>
-        <p style="font-size: 14px; color: #888; margin-bottom: 30px;">참석이 어려우신 분들을 위해<br>계좌번호를 기재하였습니다.</p>
+        <!-- 마음 전하실 곳 텍스트 글씨체를 고운바탕체로 확실하게 클래스 지정하여 강제 적용 -->
+        <div class="section-title ko-title">마음 전하실 곳 🫶🏼</div>
+        <p style="font-size: 14px; color: #888; margin-bottom: 30px; font-family: 'Gowun Batang', serif !important;">참석이 어려우신 분들을 위해<br>계좌번호를 기재하였습니다.</p>
         
         <button class="account-btn" onclick="toggleAccount('groom-acc')">🤵 신랑측 마음 전하는 곳 <span>▼</span></button>
         <div id="groom-acc" class="account-content">
@@ -336,39 +346,54 @@
             
             <div class="chat-divider"></div>
 
-            <!-- 질문 2 -->
+            <!-- 질문 2 (새로 추가) -->
             <div class="chat-msg left">
-                <div class="chat-bubble gray">Q2. 함께하는 취미는 무엇인가요? 👩‍❤️‍👨</div>
+                <div class="chat-bubble gray">Q2. 서로의 취향이 보이는 책이나 음악 추천! 📚🎵</div>
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">시형 🤵</div>
-                <div class="chat-bubble blue">주말마다 같이 맛집 탐방하고 예쁜 카페 가기 ☕️</div>
+                <div class="chat-bubble blue">우리가 좋아하는 영화 '어바웃 타임' OST! 들을 때마다 네 생각 나 🎧</div>
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">유경 👰</div>
-                <div class="chat-bubble blue">자기 전 같이 누워서 넷플릭스 보는 것도 빼놓을 수 없지 🎬</div>
+                <div class="chat-bubble blue">나는 베르나르 뷔페 화집! 내 취향을 함께 즐겨줘서 늘 고마워 🎨</div>
             </div>
 
             <div class="chat-divider"></div>
 
-            <!-- 질문 3 -->
+            <!-- 질문 3 (기존 2번) -->
             <div class="chat-msg left">
-                <div class="chat-bubble gray">Q3. 신혼여행은 어디로 가시나요? ✈️</div>
+                <div class="chat-bubble gray">Q3. 함께하는 취미는 무엇인가요? 👩‍❤️‍👨</div>
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">시형 🤵</div>
-                <div class="chat-bubble blue">에메랄드빛 바다가 펼쳐진 몰디브로 떠납니다 🌊</div>
+                <div class="chat-bubble blue">주말마다 우리 귀여운 타네랑 같이 산책하고 예쁜 카페 가기 🐶☕️</div>
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">유경 👰</div>
-                <div class="chat-bubble blue">푹 쉬면서 평생 기억에 남을 예쁜 추억 많이 만들고 올게! 🌴</div>
+                <div class="chat-bubble blue">산책 다녀와서 셋이 나란히 누워 쉬는 시간이 제일 행복해 💛</div>
             </div>
 
             <div class="chat-divider"></div>
 
-            <!-- 질문 4 -->
+            <!-- 질문 4 (기존 3번) -->
             <div class="chat-msg left">
-                <div class="chat-bubble gray">Q4. 앞으로의 우리집 가훈은? 🏡</div>
+                <div class="chat-bubble gray">Q4. 신혼여행은 어디로 가시나요? ✈️</div>
+            </div>
+            <div class="chat-msg right">
+                <div class="chat-name">시형 🤵</div>
+                <div class="chat-bubble blue">우리가 그토록 기대하던 프랑스 파리와 프로방스로 떠납니다! ✈️</div>
+            </div>
+            <div class="chat-msg right">
+                <div class="chat-name">유경 👰</div>
+                <div class="chat-bubble blue">가서 낭만적인 풍경도 보고 맛있는 것도 잔뜩 먹고 오자 🇫🇷</div>
+            </div>
+
+            <div class="chat-divider"></div>
+
+            <!-- 질문 5 (기존 4번) -->
+            <div class="chat-msg left">
+                <div class="chat-bubble gray">Q5. 앞으로의 우리집 가훈은? 🏡</div>
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">시형 🤵</div>
@@ -376,7 +401,7 @@
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">유경 👰</div>
-                <div class="chat-bubble blue">매일매일 사소한 것에도 웃음이 끊이지 않는 집 만들기 ❤️</div>
+                <div class="chat-bubble blue">매일매일 사소한 것에도 웃음이 끊이지 않는 따뜻한 집 만들기 ❤️</div>
             </div>
             
         </div>
