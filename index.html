@@ -10,20 +10,24 @@
     <meta property="og:image" content="19.jpeg">
     
     <title>이시형 & 김유경 모바일 청첩장</title>
-    <!-- 폰트: 한글(고운바탕), 영문 제목(코모란트 가라몬드), 영문 이름(피뇬 스크립트) -->
-    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:wght@400;600&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+    <!-- 폰트: 한글(고운바탕), 영문(코모란트 가라몬드) - 사진 속 스타일로 통일 -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #f6f4ee; 
             --text-color: #3b3a37;
             --point-color: #8c8c8c;
             --border-color: #dcd7ce;
+            /* 사진 속 스타일을 위한 폰트 변수 정의 */
+            --font-serif-ko: 'Gowun Batang', serif;
+            --font-serif-en: 'Cormorant Garamond', serif;
         }
 
         body {
             margin: 0; padding: 0;
             background-color: #ebebeb;
-            font-family: 'Gowun Batang', serif;
+            /* 전체 글씨체 통일 */
+            font-family: var(--font-serif-ko);
             color: var(--text-color);
             overflow-x: hidden;
         }
@@ -54,33 +58,35 @@
         .section { padding: 70px 20px; text-align: center; border-bottom: 1px solid #efebe1; position: relative; z-index: 10; }
         .section:last-child { border-bottom: none; }
         .section-title { 
-            font-family: 'Cormorant Garamond', serif; 
+            font-family: var(--font-serif-en); 
             font-variant: small-caps; 
             font-size: 18px; letter-spacing: 4px; margin-bottom: 40px; color: #5a5750; 
         }
 
-        /* 메인 사진: 원본 비율 유지, 살짝 둥근 모서리 */
-        .main-photo-original {
-            width: 90%;
+        /* 메인 사진: 가로 화면에 꽉 차게 수정 */
+        .main-photo-full-width {
+            width: 100%; /* 가로 화면 꽉 차게 */
             height: auto;
-            border-radius: 6px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            margin: 0 auto;
+            border-radius: 0; /* 둥근 모서리 제거 */
+            margin: 0; /* 외부 마진 제거 */
             display: block;
             filter: sepia(0.15) contrast(0.95); /* 빈티지 감성 유지 */
         }
 
-        /* 영문 이름 필기체 폰트 */
-        .names-script {
-            font-family: 'Pinyon Script', cursive;
-            font-size: 55px;
+        /* 메인 섹션은 측면 패딩 제거 */
+        .main-section-no-padding { padding-left: 0; padding-right: 0; }
+
+        /* 영문 이름 스타일 수정 (정갈한 세리프체로 통일) */
+        .names-stylized {
+            font-family: var(--font-serif-en);
+            font-size: 40px;
             color: #2c2b29;
             margin: 15px 0;
             letter-spacing: 1px;
         }
 
         .invitation-en-title {
-            font-family: 'Cormorant Garamond', serif; font-variant: small-caps;
+            font-family: var(--font-serif-en); font-variant: small-caps;
             font-size: 14px; letter-spacing: 1px; color: #666; line-height: 1.8;
             margin-bottom: 40px;
         }
@@ -88,31 +94,31 @@
         .parents-box { font-size: 16px; line-height: 2.2; }
         .parents-box .relation { display: inline-block; width: 50px; color: var(--point-color); font-size: 14px; }
 
-        .calendar { width: 100%; max-width: 300px; margin: 0 auto; text-align: center; font-family: 'Cormorant Garamond', serif; }
+        .calendar { width: 100%; max-width: 300px; margin: 0 auto; text-align: center; font-family: var(--font-serif-en); }
         .cal-month { font-size: 24px; margin-bottom: 20px; font-variant: small-caps; letter-spacing: 2px; }
         .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; font-size: 14px; color: #666; }
         .cal-grid .d-day { background-color: #c2b8a3; border-radius: 50%; width: 26px; height: 26px; line-height: 26px; margin: 0 auto; color: #fff; font-weight: bold; }
         .d-day-counter { margin-top: 30px; font-size: 15px; letter-spacing: 1px; color: #7a7364; }
         
-        /* 약도 사진 빈티지 효과 (찢어진 종이 모양) */
-        .map-img { 
-            width: 90%; 
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            border-radius: 71% 29% 45% 55% / 43% 38% 62% 57%;
-            margin: 20px auto;
-            display: block;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            filter: sepia(0.2) opacity(0.9) contrast(0.9);
+        /* 지도 이미지 스타일 제거 */
+
+        /* 오시는 길 정보 전체를 클릭 가능하게 수정 */
+        .location-info-clickable {
+            font-size: 14px;
+            line-height: 2;
+            margin-top: 20px;
+            text-align: center;
+            color: #555;
             cursor: pointer;
-            transition: transform 0.2s;
+            border: 1px solid var(--border-color); /* 클릭 영역 표시를 위한 테두리 */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 6px;
         }
-        .map-img:hover { transform: scale(1.02); }
-        .location-info { font-size: 14px; line-height: 2; margin-top: 20px; text-align: center; color: #555; }
 
         .account-btn {
             width: 100%; padding: 15px; margin-bottom: 10px; background-color: transparent;
-            border: 1px solid var(--border-color); text-align: left; font-family: 'Gowun Batang', serif;
+            border: 1px solid var(--border-color); text-align: left; font-family: var(--font-serif-ko);
             cursor: pointer; display: flex; justify-content: space-between; color: var(--text-color); font-size: 15px;
         }
         .account-content {
@@ -194,28 +200,27 @@
     </audio>
     <button class="bgm-btn" onclick="toggleBgmManual()" title="배경음악 재생/정지">🎵</button>
 
-    <!-- 1. 메인 섹션 (기존 비율 원본 사진) -->
-    <div class="section" style="padding-top: 60px;">
-        <div class="names-script" style="margin-bottom: 25px;">Sihyung</div>
+    <!-- 1. 메인 섹션 (사진 가로 꽉 차게 수정) -->
+    <div class="section main-section-no-padding" style="padding-top: 60px;">
+        <div class="names-stylized" style="margin-bottom: 25px;">Sihyung</div>
         
-        <!-- 메인 사진은 1번으로 고정 -->
-        <img src="1.jpeg" alt="메인 웨딩 사진" class="main-photo-original">
+        <!-- 메인 사진은 1번으로 고정. 클래스명 변경 및 인라인 스타일 수정 -->
+        <img src="1.jpeg" alt="메인 웨딩 사진" class="main-photo-full-width">
         
-        <div class="names-script" style="margin-top: 25px;">Yukyeong</div>
+        <div class="names-stylized" style="margin-top: 25px;">Yukyeong</div>
         
-        <p style="margin-top: 35px; font-size: 14px; color: #6b675e; letter-spacing: 1px;">
+        <p style="margin-top: 35px; font-size: 14px; color: #6b675e; letter-spacing: 1px; padding: 0 20px;">
             2026. 12. 12. SAT 12:00 PM<br>
-            여수 소노캄 호텔
+            여수 소노캄 호텔<br>
+            (소노캄 호텔 그랜드볼룸 1F)
         </p>
     </div>
 
     <!-- 2. 초대글 & 혼주 -->
     <div class="section">
-        <div class="section-title">INVITATION 🌹</div>
+        <div class="section-title">INVITATION </div>
         <div class="invitation-en-title">
-            One love story continues with the promise of forever.<br>
-            Please join us as we begin this new chapter.
-        </div>
+
         <div class="greeting-text">
             무용하게 흩어지던 찰나가<br>
             함께함으로써 비로소 무구한 축복이 됩니다.<br>
@@ -266,25 +271,25 @@
         </div>
     </div>
 
-    <!-- 5. 지도 -->
+    <!-- 5. 지도 (이미지 제거 및 상세 위치 반영) -->
     <div class="section">
         <div class="section-title">LOCATION</div>
-        <!-- 깃허브에 map-image.jpg를 꼭 올려주세요! -->
-        <a href="https://map.naver.com/p/search/%EC%97%AC%EC%88%98%20%EC%86%8C%EB%85%B8%EC%BA%BC" target="_blank" title="네이버 지도로 길찾기" style="text-decoration: none;">
-            <img src="map-image.jpg" alt="여수 소노캄 약도" class="map-img">
+        
+        <!-- 지도 이미지 제거. 오시는 길 정보 전체를 클릭 가능하게 수정 -->
+        <a href="https://map.naver.com/p/search/%EC%97%AC%EC%88%98%20%EC%86%8C%EB%85%B8%EC%BA%BC" target="_blank" title="네이버 지도로 길찾기" style="text-decoration: none; display: block; width: 100%; height: auto;">
+            <div class="location-info-clickable">
+                <strong>여수 소노캄 호텔</strong><br>
+                (소노캄 호텔 그랜드볼룸 1F)<br>
+                전남 여수시 오동도로 111 (수정동)<br><br>
+                🚅 <strong>KTX/SRT 이용 시</strong><br>
+                여수엑스포역 하차 후 택시 이용 (약 5~10분)<br><br>
+                🚌 <strong>고속버스 이용 시</strong><br>
+                여수종합버스터미널 하차 후 택시 이용 (약 15분)<br><br>
+                🚗 <strong>자가용 이용 시</strong><br>
+                호텔 내 주차장 이용 가능
+            </div>
         </a>
-        <p style="font-size: 12px; color: #a39c8f; margin-top: -5px; margin-bottom: 20px; letter-spacing: 0.5px;">(약도를 클릭하시면 네이버 지도로 연결됩니다)</p>
-
-        <div class="location-info">
-            <strong>여수 소노캄 호텔 (구. 엠블호텔)</strong><br>
-            전남 여수시 오동도로 111 (수정동)<br><br>
-            🚅 <strong>KTX/SRT 이용 시</strong><br>
-            여수엑스포역 하차 후 택시 이용 (약 5~10분)<br><br>
-            🚌 <strong>고속버스 이용 시</strong><br>
-            여수종합버스터미널 하차 후 택시 이용 (약 15분)<br><br>
-            🚗 <strong>자가용 이용 시</strong><br>
-            호텔 내 하객 전용 주차장 이용 가능
-        </div>
+        <p style="font-size: 12px; color: #a39c8f; margin-top: 15px; margin-bottom: 20px; letter-spacing: 0.5px;">(오시는 길을 클릭하시면 네이버 지도로 연결됩니다)</p>
     </div>
 
     <!-- 6. 갤러리 (가로 스크롤 썸네일 & 메인 뷰어) -->
@@ -361,9 +366,9 @@
     }
     setInterval(drawSnow, 33);
 
-    // --- 갤러리 슬라이더 로직 (2번부터 25번까지 반복) ---
+    // --- 갤러리 슬라이더 로직 (2번부터 26번까지 반복하도록 수정) ---
     const galleryFiles = [];
-    for (let i = 2; i <= 25; i++) {
+    for (let i = 2; i <= 26; i++) { // 25를 26으로 변경
         galleryFiles.push(i + ".jpeg");
     }
 
