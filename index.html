@@ -10,24 +10,24 @@
     <meta property="og:image" content="19.jpeg">
     
     <title>이시형 & 김유경 모바일 청첩장</title>
-    <!-- 폰트: 한글(명조체: 고운바탕), 영문(코모란트 가라몬드), 영문이름(필기체: Great Vibes) -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Gowun+Batang:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- 폰트: 한글(명조체: 고운바탕), 영문(코모란트 가라몬드), 영문이름(사진 속 얇은 필기체: Pinyon Script) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Gowun+Batang:wght@400;700&family=Pinyon+Script&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #f6f4ee; 
             --text-color: #3b3a37;
             --point-color: #8c8c8c;
             --border-color: #dcd7ce;
-            /* 폰트 변수 정의 (사진에 맞춰 한글을 명조체로 변경) */
+            /* 폰트 변수 정의 */
             --font-serif-ko: 'Gowun Batang', serif;
             --font-serif-en: 'Cormorant Garamond', serif;
-            --font-script-en: 'Daniella', 'Great Vibes', cursive; /* Daniella 폰트 및 필기체 대체 폰트 */
+            --font-script-en: 'Pinyon Script', cursive; /* 첨부해주신 사진과 유사한 우아한 필기체 */
         }
 
         body {
             margin: 0; padding: 0;
             background-color: #ebebeb;
-            /* 전체 글씨체 명조체로 통일 */
+            /* 전체 글씨체 고운바탕체로 통일 */
             font-family: var(--font-serif-ko);
             color: var(--text-color);
             overflow-x: hidden;
@@ -65,26 +65,25 @@
             font-size: 18px; letter-spacing: 4px; margin-bottom: 40px; color: #5a5750; 
         }
 
-        /* 메인 사진: 가로 화면에 꽉 차게 수정 */
+        /* 메인 사진: 가로 화면에 꽉 차게 */
         .main-photo-full-width {
-            width: 100%; /* 가로 화면 꽉 차게 */
+            width: 100%; 
             height: auto;
-            border-radius: 0; /* 둥근 모서리 제거 */
-            margin: 0; /* 외부 마진 제거 */
+            border-radius: 0; 
+            margin: 0; 
             display: block;
-            filter: sepia(0.15) contrast(0.95); /* 빈티지 감성 유지 */
+            filter: sepia(0.15) contrast(0.95); 
         }
 
-        /* 메인 섹션은 측면 패딩 제거 */
         .main-section-no-padding { padding-left: 0; padding-right: 0; }
 
-        /* 영문 이름 스타일 수정 (참조 이미지에 맞춰 크기 축소 및 색상 완화) */
+        /* 영문 이름 스타일 수정 (사진 참조: Pinyon Script, 소문자 적용) */
         .names-stylized {
             font-family: var(--font-script-en);
-            font-size: 42px; /* 55px에서 42px로 축소 */
-            color: #666666; /* 덜 튀도록 부드러운 짙은 회색으로 변경 */
+            font-size: 60px; /* 폰트 특성상 조금 커야 예쁨 */
+            color: #1a1a1a;
             margin: 15px 0;
-            letter-spacing: 1px;
+            text-transform: lowercase; /* 사진처럼 소문자로 강제 변환 */
             font-weight: normal;
         }
 
@@ -103,7 +102,6 @@
         .cal-grid .d-day { background-color: #c2b8a3; border-radius: 50%; width: 26px; height: 26px; line-height: 26px; margin: 0 auto; color: #fff; font-weight: bold; }
         .d-day-counter { margin-top: 30px; font-size: 15px; letter-spacing: 1px; color: #7a7364; font-family: var(--font-serif-ko); }
         
-        /* 오시는 길 정보 전체를 클릭 가능하게 수정 */
         .location-info-clickable {
             font-size: 14px;
             line-height: 2;
@@ -111,7 +109,7 @@
             text-align: center;
             color: #555;
             cursor: pointer;
-            border: 1px solid var(--border-color); /* 클릭 영역 표시를 위한 테두리 */
+            border: 1px solid var(--border-color);
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.4);
             border-radius: 6px;
@@ -134,58 +132,69 @@
         .acc-name { font-weight: 700; margin-bottom: 4px; }
         .acc-num { color: #666; }
 
-        /* 갤러리 슬라이드 스타일 */
+        /* 갤러리 */
         .gallery-wrapper { width: 100%; }
         .gallery-main {
-            width: 100%;
-            margin-bottom: 15px;
-            overflow: hidden;
-            border-radius: 4px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: transparent;
+            width: 100%; margin-bottom: 15px; overflow: hidden; border-radius: 4px;
+            display: flex; justify-content: center; align-items: center; background-color: transparent;
         }
         .gallery-main img {
-            width: 100%;
-            height: auto;
-            object-fit: contain; 
-            cursor: zoom-in;
-            filter: sepia(0.1) contrast(0.95);
-            border-radius: 4px;
+            width: 100%; height: auto; object-fit: contain; cursor: zoom-in; filter: sepia(0.1) contrast(0.95); border-radius: 4px;
         }
         .gallery-thumbs {
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding-bottom: 10px;
-            scroll-snap-type: x mandatory;
+            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory;
         }
         .gallery-thumbs::-webkit-scrollbar { display: none; }
         .gallery-thumbs img {
-            width: 70px; height: 70px;
-            object-fit: cover;
-            border-radius: 4px;
-            cursor: pointer;
-            opacity: 0.5;
-            transition: all 0.2s;
-            scroll-snap-align: start;
+            width: 70px; height: 70px; object-fit: cover; border-radius: 4px; cursor: pointer; opacity: 0.5; transition: all 0.2s; scroll-snap-align: start;
         }
-        .gallery-thumbs img.active {
-            opacity: 1;
-            box-shadow: 0 0 0 2px #888;
-        }
+        .gallery-thumbs img.active { opacity: 1; box-shadow: 0 0 0 2px #888; }
 
-        /* Lightbox (확대 팝업) */
         .lightbox {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.95); z-index: 10000;
-            justify-content: center; align-items: center; flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.95); z-index: 10000; justify-content: center; align-items: center; flex-direction: column;
         }
         .lightbox.active { display: flex; }
         .lightbox img { max-width: 95%; max-height: 85vh; object-fit: contain; user-select: none; }
         .lightbox-close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 30px; cursor: pointer; padding: 10px; }
         .lightbox-hint { color: #aaa; font-size: 12px; margin-top: 15px; font-family: var(--font-serif-ko);}
+
+        /* 아이폰 문자 대화 형식 (우리의 이야기) CSS */
+        .chat-container {
+            background-color: #f2f2f7; /* 아이폰 배경색 */
+            border-radius: 20px;
+            padding: 25px 15px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            /* 문자는 폰트를 고딕계열로 해야 진짜 아이폰 느낌이 납니다 */
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+        }
+        .chat-date {
+            text-align: center; font-size: 12px; color: #8e8e93; margin-bottom: 10px; font-weight: 500;
+        }
+        .chat-msg {
+            display: flex; flex-direction: column; max-width: 80%;
+        }
+        .chat-msg.left { align-self: flex-start; }
+        .chat-msg.right { align-self: flex-end; align-items: flex-end; }
+        
+        .chat-name {
+            font-size: 11px; color: #8e8e93; margin-bottom: 4px; padding: 0 5px;
+        }
+        .chat-bubble {
+            padding: 10px 14px; border-radius: 18px; font-size: 14px; line-height: 1.4; word-break: keep-all; box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .chat-bubble.gray {
+            background-color: #e9e9eb; color: #000; border-bottom-left-radius: 4px;
+        }
+        .chat-bubble.blue {
+            background-color: #007aff; color: #fff; border-bottom-right-radius: 4px; text-align: left;
+        }
+        /* 각 질문 사이 간격 */
+        .chat-divider { height: 10px; }
 
     </style>
 </head>
@@ -203,12 +212,12 @@
 
     <!-- 1. 메인 섹션 -->
     <div class="section main-section-no-padding" style="padding-top: 60px;">
-        <div class="names-stylized" style="margin-bottom: 25px;">Sihyung</div>
+        <div class="names-stylized" style="margin-bottom: 25px;">sihyung</div>
         
         <!-- 메인 사진 -->
         <img src="1.jpeg" alt="메인 웨딩 사진" class="main-photo-full-width">
         
-        <div class="names-stylized" style="margin-top: 25px;">Yukyeong</div>
+        <div class="names-stylized" style="margin-top: 25px;">yukyeong</div>
         
         <p style="margin-top: 35px; font-size: 14px; color: #6b675e; letter-spacing: 1px; padding: 0 20px;">
             2026. 12. 12. SAT 12:00 PM<br>
@@ -302,6 +311,74 @@
             <div class="gallery-thumbs" id="gallery-thumbs"></div>
         </div>
         <p style="font-size: 12px; color: #a39c8f; margin-top: 15px;">(사진을 클릭하시면 확대됩니다)</p>
+    </div>
+
+    <!-- 7. 우리의 이야기 (아이폰 문자 스타일) -->
+    <div class="section">
+        <div class="section-title" style="margin-bottom: 10px;">OUR STORY</div>
+        
+        <div class="chat-container">
+            <div class="chat-date">오늘 오후 12:12</div>
+            
+            <!-- 질문 1 -->
+            <div class="chat-msg left">
+                <div class="chat-bubble gray">Q1. 서로의 첫 인상은 어땠나요? 🤔</div>
+            </div>
+            <div class="chat-msg right">
+                <div class="chat-name">시형 🤵</div>
+                <div class="chat-bubble blue">처음 본 순간부터 환하게 웃는 미소가 너무 예뻤어! ✨</div>
+            </div>
+            <div class="chat-msg right">
+                <div class="chat-name">유경 👰</div>
+                <div class="chat-bubble blue">참 다정하고 듬직한 사람이라고 생각했지 😊</div>
+            </div>
+            
+            <div class="chat-divider"></div>
+
+            <!-- 질문 2 -->
+            <div class="chat-msg left">
+                <div class="chat-bubble gray">Q2. 함께하는 취미는 무엇인가요? 👩‍❤️‍👨</div>
+            </div>
+            <div class="chat-msg right">
+                <div class="chat-name">시형 🤵</div>
+                <div class="chat-bubble blue">주말마다 같이 맛집 탐방하고 예쁜 카페 가기 ☕️</div>
+            </div>
+            <div class="chat-msg right">
+                <div class="chat-name">유경 👰</div>
+                <div class="chat-bubble blue">자기 전 같이 누워서 넷플릭스 보는 것도 빼놓을 수 없지 🎬</div>
+            </div>
+
+            <div class="chat-divider"></div>
+
+            <!-- 질문 3 -->
+            <div class="chat-msg left">
+                <div class="chat-bubble gray">Q3. 신혼여행은 어디로 가시나요? ✈️</div>
+            </div>
+            <div class="chat-msg right">
+                <div class="chat-name">시형 🤵</div>
+                <div class="chat-bubble blue">에메랄드빛 바다가 펼쳐진 몰디브로 떠납니다 🌊</div>
+            </div>
+            <div class="chat-msg right">
+                <div class="chat-name">유경 👰</div>
+                <div class="chat-bubble blue">푹 쉬면서 평생 기억에 남을 예쁜 추억 많이 만들고 올게! 🌴</div>
+            </div>
+
+            <div class="chat-divider"></div>
+
+            <!-- 질문 4 -->
+            <div class="chat-msg left">
+                <div class="chat-bubble gray">Q4. 앞으로의 우리집 가훈은? 🏡</div>
+            </div>
+            <div class="chat-msg right">
+                <div class="chat-name">시형 🤵</div>
+                <div class="chat-bubble blue">서로에게 세상에서 가장 좋은 친구가 되어주기 👫</div>
+            </div>
+            <div class="chat-msg right">
+                <div class="chat-name">유경 👰</div>
+                <div class="chat-bubble blue">매일매일 사소한 것에도 웃음이 끊이지 않는 집 만들기 ❤️</div>
+            </div>
+            
+        </div>
     </div>
 
     <!-- 사진 확대 팝업 -->
