@@ -472,7 +472,9 @@
     // --- 갤러리 슬라이더 로직 ---
     const galleryFiles = [];
     for (let i = 2; i <= 26; i++) {
-        galleryFiles.push(i + ".jpeg");
+        if (i !== 8) { // 8번 사진 제외
+            galleryFiles.push(i + ".jpeg");
+        }
     }
 
     const galleryMainImg = document.getElementById('gallery-main-img');
