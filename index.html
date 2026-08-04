@@ -86,17 +86,7 @@
 
         .main-section-no-padding { padding-left: 0; padding-right: 0; }
 
-        /* 영문 이름 - 우아하고 여리여리한 세리프 이탤릭체로 변경 */
-        .names-stylized {
-            font-family: var(--font-serif-en);
-            font-style: italic;
-            font-size: 38px;
-            color: #332f2d;
-            margin: 20px 0;
-            text-transform: lowercase;
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
+        /* 영문 이름 스타일은 삭제 */
 
         .invitation-en-title {
             font-family: var(--font-serif-en);
@@ -113,10 +103,30 @@
         .cal-grid .d-day { background-color: #e3ddd3; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; margin: 0 auto; color: #5c564d; font-weight: 500; }
         .d-day-counter { margin-top: 35px; font-size: 14px; letter-spacing: 1px; color: #7a7364; font-family: var(--font-serif-ko); }
         
-        .location-info-clickable {
-            font-size: 14px; line-height: 2.2; margin-top: 20px; text-align: center; color: #555;
-            cursor: pointer; border: 1px solid var(--border-color); padding: 25px 20px;
-            background-color: #faf9f7; border-radius: 4px; transition: all 0.3s ease;
+        /* 오시는 길 상세 정보 스타일 (image_2.png 스타일) */
+        .location-details {
+            font-size: 14px; line-height: 2.2; text-align: center; color: #555; margin-top: 20px;
+        }
+        .venue-name { font-size: 18px; color: #444; margin-bottom: 5px; font-weight: 700; }
+        .venue-address { margin-bottom: 5px; color: #666; }
+        .venue-phone { margin-bottom: 25px; color: #888; font-family: var(--font-serif-en); }
+        
+        /* 지도 앱 버튼 그룹 스타일 */
+        .map-app-btn-group {
+            display: flex; justify-content: center; gap: 10px; margin-bottom: 35px;
+        }
+        .map-app-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 100px; height: 36px;
+            background-color: #f1f1f1; border: 1px solid #e1e1e1; border-radius: 18px;
+            font-size: 13px; color: #444; text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .map-app-btn:hover { background-color: #e9e9e9; }
+        .map-app-btn::after { content: ' ↗'; font-size: 11px; color: #888; }
+        
+        .location-info-clickable-legacy { /* 기존 스타일은 숨김 */
+            display: none;
         }
 
         .account-btn {
@@ -131,13 +141,24 @@
             border-top: none; margin-top: -14px; margin-bottom: 20px; font-size: 13px; text-align: left; line-height: 1.8;
             font-family: var(--font-serif-ko) !important; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;
         }
-        .acc-row {
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px dashed #eee; padding: 14px 0;
+        
+        /* 계좌 박스 스타일 (image_3.png 스타일) */
+        .account-box {
+            background-color: #faf9f7; border: 1px solid var(--border-color); border-radius: 6px;
+            padding: 20px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;
         }
-        .acc-row:last-child { border-bottom: none; padding-bottom: 0; }
-        .acc-name { font-weight: 700; color: #555; margin-bottom: 4px; display: inline-block; width: 120px; }
-        .acc-num { color: #777; }
+        .acc-copy-details {
+            display: flex; flex-direction: column; flex-grow: 1; margin-right: 15px;
+        }
+        .acc-name { font-weight: 700; color: #555; margin-bottom: 5px; font-size: 15px; }
+        .acc-num { color: #888; }
+        .copy-btn {
+            background: none; border: none; cursor: pointer; padding: 0;
+            display: flex; align-items: center; justify-content: center;
+            transition: transform 0.2s;
+        }
+        .copy-btn:active { transform: scale(0.95); }
+        .copy-icon { width: 22px; height: 22px; color: #b5a999; } /* 복사 아이콘 */
 
         /* 갤러리 */
         .gallery-wrapper { width: 100%; }
@@ -166,7 +187,7 @@
         .lightbox-close { position: absolute; top: 20px; right: 20px; color: #333; font-size: 35px; cursor: pointer; padding: 10px; font-weight: 300; }
         .lightbox-hint { color: #888; font-size: 12px; margin-top: 20px; font-family: var(--font-serif-ko);}
 
-        /* 우리의 이야기 (청순하고 차분한 톤으로 수정) */
+        /* 우리의 이야기 (청순하고 차분한 톤) */
         .chat-container {
             background-color: #faf9f7; /* 부드러운 웜그레이/베이지 톤 배경 */
             border: 1px solid var(--border-color);
@@ -202,6 +223,15 @@
         }
         .chat-divider { height: 15px; }
 
+        /* 복사 완료 토스트 알림 */
+        .toast-msg {
+            visibility: hidden; min-width: 150px; background-color: #4a4543; color: #fff;
+            text-align: center; border-radius: 20px; padding: 10px 15px; position: fixed;
+            z-index: 10001; bottom: 30px; left: 50%; transform: translateX(-50%); font-size: 13px;
+            opacity: 0; transition: opacity 0.5s, bottom 0.5s;
+        }
+        .toast-msg.show { visibility: visible; opacity: 1; bottom: 50px; }
+
     </style>
 </head>
 <body>
@@ -218,12 +248,12 @@
 
     <!-- 1. 메인 섹션 -->
     <div class="section main-section-no-padding" style="padding-top: 70px;">
-        <div class="names-stylized" style="margin-bottom: 30px;">sihyung</div>
+        <!-- 영문 이름 삭제 -->
         
         <!-- 메인 사진 -->
         <img src="1.jpeg" alt="메인 웨딩 사진" class="main-photo-full-width">
         
-        <div class="names-stylized" style="margin-top: 30px;">yukyeong</div>
+        <!-- 영문 이름 삭제 -->
         
         <p style="margin-top: 40px; font-size: 13px; color: #7a756e; letter-spacing: 2px; padding: 0 20px; font-family: var(--font-serif-en); text-transform: uppercase;">
             2026. 12. 12. SAT 12:00 PM<br><br>
@@ -233,7 +263,7 @@
 
     <!-- 2. 초대글 & 혼주 -->
     <div class="section">
-        <div class="section-title">Invitation</div>
+        <div class="section-title">💌 Invitation</div>
 
         <div class="greeting-text">
             무용하게 흩어지던 찰나가<br>
@@ -242,37 +272,81 @@
             영원을 맹세합니다.<br>
             <br>
             하나에서 둘이 되는 12월 12일,<br>
-            귀하신 분들을 초대하여 이 기쁨을 나누고자 합니다.
+            귀하신 분들을 초대하여 이 기쁨을 나누고자 합니다.🌹
         </div>
         <div class="parents-box">
-            이창희 · 임은영 <span class="relation">의 아들</span> 시형<br>
-            최인숙 <span class="relation">의 &nbsp; 딸</span> 유경
+            이창희 · 임은영 <span class="relation">의 아들🤵</span> 시형<br>
+            최인숙 <span class="relation">의 딸👰</span> 유경
         </div>
     </div>
 
     <!-- 3. 계좌번호 -->
     <div class="section">
-        <div class="section-title ko-title">마음 전하실 곳</div>
+        <div class="section-title ko-title">💝 마음 전하실 곳 🫶🏼</div>
         <p style="font-size: 13px; color: #999; margin-bottom: 35px; line-height: 1.8;">참석이 어려우신 분들을 위해<br>계좌번호를 기재하였습니다.</p>
         
-        <button class="account-btn" onclick="toggleAccount('groom-acc')">신랑측 마음 전하는 곳 <span style="color:#ccc; font-size:10px;">▼</span></button>
+        <button class="account-btn" onclick="toggleAccount('groom-acc')">신랑측 마음 전하는 곳🤵 <span style="color:#ccc; font-size:10px;">▼</span></button>
         <div id="groom-acc" class="account-content">
-            <div class="acc-row"><div class="acc-details"><span class="acc-name">신랑 이시형</span> <span class="acc-num">국민 01024767783</span></div></div>
-            <div class="acc-row"><div class="acc-details"><span class="acc-name">신랑 아버지 이창희</span> <span class="acc-num">국민 01024767783</span></div></div>
-            <div class="acc-row"><div class="acc-details"><span class="acc-name">신랑 어머니 임은영</span> <span class="acc-num">국민 01024767783</span></div></div>
+            <!-- 복사 기능이 추가된 박스 형태 (image_3.png 스타일) -->
+            <div class="account-box">
+                <div class="acc-copy-details">
+                    <span class="acc-name">신랑 이시형</span>
+                    <span class="acc-num" id="acc-groom">국민 010-2476-7783</span>
+                </div>
+                <button class="copy-btn" onclick="copyAccountNumber('acc-groom')" title="계좌번호 복사">
+                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+            </div>
+            <div class="account-box">
+                <div class="acc-copy-details">
+                    <span class="acc-name">신랑 아버지 이창희</span>
+                    <span class="acc-num" id="acc-father-groom">국민 010-2476-7783</span>
+                </div>
+                <button class="copy-btn" onclick="copyAccountNumber('acc-father-groom')" title="계좌번호 복사">
+                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+            </div>
+            <div class="account-box">
+                <div class="acc-copy-details">
+                    <span class="acc-name">신랑 어머니 임은영</span>
+                    <span class="acc-num" id="acc-mother-groom">국민 010-2476-7783</span>
+                </div>
+                <button class="copy-btn" onclick="copyAccountNumber('acc-mother-groom')" title="계좌번호 복사">
+                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+            </div>
         </div>
 
-        <button class="account-btn" onclick="toggleAccount('bride-acc')">신부측 마음 전하는 곳 <span style="color:#ccc; font-size:10px;">▼</span></button>
+        <button class="account-btn" onclick="toggleAccount('bride-acc')">신부측 마음 전하는 곳👰 <span style="color:#ccc; font-size:10px;">▼</span></button>
         <div id="bride-acc" class="account-content">
-            <div class="acc-row"><div class="acc-details"><span class="acc-name">신부 김유경</span> <span class="acc-num">국민 01024767783</span></div></div>
-            <div class="acc-row"><div class="acc-details"><span class="acc-name">신부 어머니 최인숙</span> <span class="acc-num">국민 01024767783</span></div></div>
+            <div class="account-box">
+                <div class="acc-copy-details">
+                    <span class="acc-name">신부 김유경</span>
+                    <span class="acc-num" id="acc-bride">국민 010-2476-7783</span>
+                </div>
+                <button class="copy-btn" onclick="copyAccountNumber('acc-bride')" title="계좌번호 복사">
+                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+            </div>
+            <div class="account-box">
+                <div class="acc-copy-details">
+                    <span class="acc-name">신부 어머니 최인숙</span>
+                    <span class="acc-num" id="acc-mother-bride">국민 010-2476-7783</span>
+                </div>
+                <button class="copy-btn" onclick="copyAccountNumber('acc-mother-bride')" title="계좌번호 복사">
+                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+            </div>
         </div>
     </div>
+    
+    <!-- 복사 완료 토스트 알림 HTML -->
+    <div id="toast" class="toast-msg">📋 계좌번호가 복사되었습니다. ✨</div>
 
     <!-- 4. 날짜 달력 & 디데이 -->
     <div class="section">
         <div class="calendar">
-            <div class="cal-month">December</div>
+            <div class="cal-month">❄️ December</div>
             <div class="cal-grid">
                 <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
                 <div></div><div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
@@ -287,9 +361,31 @@
 
     <!-- 5. 지도 -->
     <div class="section">
-        <div class="section-title">Location</div>
+        <div class="section-title">📍 Location</div>
         
-        <a href="https://map.naver.com/p/search/%EC%97%AC%EC%88%98%20%EC%86%8C%EB%85%B8%EC%BA%BC" target="_blank" title="네이버 지도로 길찾기" style="text-decoration: none; display: block; width: 100%; height: auto;">
+        <!-- 오시는 길 상세 정보 및 앱 버튼 그룹 (image_2.png 스타일) -->
+        <div class="location-details">
+            <div class="venue-name">여수 소노캄 호텔</div>
+            <div class="venue-address">전남 여수시 오동도로 111 (수정동)</div>
+            <div class="venue-phone">(그랜드볼룸 1F)</div>
+            
+            <!-- 지도 앱 버튼 그룹 -->
+            <div class="map-app-btn-group">
+                <a href="https://map.naver.com/p/search/%EC%97%AC%EC%88%98%20%EC%86%8C%EB%85%B8%EC%BA%BC" target="_blank" class="map-app-btn" title="네이버 지도로 열기">네이버 지도</a>
+                <a href="https://map.kakao.com/?q=%EC%97%AC%EC%88%98%20%EC%86%8C%EB%85%B8%EC%BA%BC" target="_blank" class="map-app-btn" title="카카오맵으로 열기">카카오맵</a>
+                <a href="https://tmap.life/46f338d3" target="_blank" class="map-app-btn" title="티맵으로 열기">티맵</a>
+            </div>
+
+            🚅 <strong>KTX/SRT 이용 시</strong><br>
+            여수엑스포역 하차 후 택시 이용 (약 5분)<br><br>
+            🚌 <strong>고속버스 이용 시</strong><br>
+            여수종합버스터미널 하차 후 택시 이용 (약 10분)<br><br>
+            🚗 <strong>자가용 이용 시</strong><br>
+            호텔 내 주차장 이용 가능
+        </div>
+        
+        <!-- 기존 클릭 가능한 박스는 숨김 -->
+        <a href="https://map.naver.com/p/search/%EC%97%AC%EC%88%98%20%EC%86%8C%EB%85%B8%EC%BA%BC" target="_blank" title="네이버 지도로 길찾기" style="text-decoration: none; display: block; width: 100%; height: auto;" class="location-info-clickable-legacy">
             <div class="location-info-clickable">
                 <strong style="color: #444; font-size: 15px;">여수 소노캄 호텔</strong><br>
                 <span style="color: #888; font-size: 13px;">(그랜드볼룸 1F)</span><br>
@@ -302,7 +398,6 @@
                 호텔 내 주차장 이용 가능
             </div>
         </a>
-        <p style="font-size: 12px; color: #b5a999; margin-top: 20px; letter-spacing: 0.5px;">(오시는 길을 클릭하시면 네이버 지도로 연결됩니다)</p>
     </div>
 
     <!-- 6. 갤러리 -->
@@ -330,14 +425,14 @@
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">시형</div>
-                <div class="chat-bubble blue">첫눈에 반한거 다 알고 잇다 이시헝</div>
+                <div class="chat-bubble blue">첫눈에 반한거 다 알고 잇다 이시헝🥰 너무 떨려서 고백도 못 할 뻔했다니까? 😂</div>
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">유경</div>
                 <div class="chat-bubble blue">개그맨이 나온 줄 알았어! 🤣 깔깔댄 기억 뿐이야. 그만큼 첫 만남부터 너무 즐거웠어😌</div>
             </div>
             
-            <div class="chat-divider"></div>
+            <div class="chat-divider">💖</div>
 
             <!-- 질문 2 -->
             <div class="chat-msg left">
@@ -345,14 +440,14 @@
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">시형</div>
-                <div class="chat-bubble blue">이시헝 트렌트코리아 이런거 하지 마라</div>
+                <div class="chat-bubble blue">이시헝 트렌트코리아 이런거 하지 마라🎶 우리가 좋아하는 영화 '어바웃 타임' OST 'The Luckiest' 🎧</div>
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">유경</div>
-                <div class="chat-bubble blue">엄선하고 엄선한.. 지소쿠리클럽-Then Tonight, 선셋 롤러코스터-Piccolo Amore, 이문세-깊은 밤을 날아서, 스미카-Summer Vacation🎧</div>
+                <div class="chat-bubble blue">엄선하고 엄선한 우리의 인생 플리야... 🎧 Ji So Kurri Club - Then Tonight, Sunset Rollercoaster - Piccolo Amore, Lee Moon Sae - Fly into the Deep Night, Sumika - Summer Vacation... 우리의 취향을 엿볼 수 있을 거야! ✨🎧</div>
             </div>
 
-            <div class="chat-divider"></div>
+            <div class="chat-divider">💖</div>
 
             <!-- 질문 3 -->
             <div class="chat-msg left">
@@ -360,41 +455,41 @@
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">시형</div>
-                <div class="chat-bubble blue">전시회 같이 본거 ㅎㅎ</div>
+                <div class="chat-bubble blue">전시회 같이 본거 ㅎㅎ🎨 미술관 데이트를 즐겨. 우리의 감성을 나누는 소중한 시간이야.</div>
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">유경</div>
-                <div class="chat-bubble blue">여행도! 필리핀🇵🇭, 태국🇹🇭, 이집트🇪🇬 다녀왔지! 사하라사막에서 본 은하수는 평생을 곱씹어도 모자라🌌</div>
+                <div class="chat-bubble blue">여행도! 필리핀🇵🇭, 태국🇹🇭, 이집트🇪🇬 다녀왔지! 사하라사막에서 본 은하수는 평생을 곱씹어도 모자라🌌. 우리는 환상의 여행 파트너야! ✨✈️🌌</div>
             </div>
 
-            <div class="chat-divider"></div>
+            <div class="chat-divider">💖</div>
 
             <!-- 질문 4 -->
             <div class="chat-msg left">
-                <div class="chat-bubble gray">Q4. 신혼여행은 어디로 가시나요? ✈️</div>
+                <div class="chat-bubble gray">Q4. 신혼여행은 어디로 가시나요? ✈️🇫🇷</div>
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">시형</div>
-                <div class="chat-bubble blue">우리가 좋아하는 화가 "베르나르 뷔페"의 생애를 따라 프랑스 파리~투르투르(남프랑스)로 갑니다🇫🇷</div>
+                <div class="chat-bubble blue">우리가 좋아하는 화가 "베르나르 뷔페"의 생애를 따라 프랑스 파리~투르투르(남프랑스)로 갑니다🇫🇷. 예술과 낭만이 가득한 여행이 될 것 같아.</div>
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">유경</div>
-                <div class="chat-bubble blue">가서 낭만적인 풍경도 보고 맛있는 것도 잔뜩 먹고 오자🌹</div>
+                <div class="chat-bubble blue">가서 낭만적인 풍경도 보고 맛있는 것도 잔뜩 먹고 오자🌹. Bernard Buffet 그림 속에 들어간 것처럼 행복할 거야.</div>
             </div>
 
-            <div class="chat-divider"></div>
+            <div class="chat-divider">💖</div>
 
             <!-- 질문 5 -->
             <div class="chat-msg left">
-                <div class="chat-bubble gray">Q5. 우리집 가훈은?</div>
+                <div class="chat-bubble gray">Q5. 우리집 가훈은? 🏡💖</div>
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">시형</div>
-                <div class="chat-bubble blue">어쩌고 저쩌고</div>
+                <div class="chat-bubble blue">어쩌고 저쩌고👫 서로에게 세상에서 가장 좋은 친구가 되어주기.</div>
             </div>
             <div class="chat-msg right">
                 <div class="chat-name">유경</div>
-                <div class="chat-bubble blue">다정한 가정🫂 우리의 다정함이 우리 가정에, 그리고 주위에 따뜻한 온기가 되길 바라요.</div>
+                <div class="chat-bubble blue">다정한 가정🫂 우리의 다정함이 우리 가정에, 그리고 주위에 따뜻한 온기가 되길 바라요. 🤍 매일매일 사소한 것에도 웃음이 끊이지 않는 따뜻한 집 만들기. ❤️</div>
             </div>
             
         </div>
@@ -557,6 +652,31 @@
         } else {
             content.style.display = "block";
         }
+    }
+    
+    // --- 계좌번호 복사 기능 및 토스트 알림 ---
+    function copyAccountNumber(id) {
+        const accNumElement = document.getElementById(id);
+        const textToCopy = accNumElement.innerText.replace(/[^0-9-]/g, ''); // 숫자와 하이픈만 추출
+        
+        // 클립보드에 복사
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            // 토스트 알림 표시
+            showToast();
+        }).catch(err => {
+            console.error('복사 실패: ', err);
+            alert('계좌번호 복사에 실패했습니다. 수동으로 복사해주세요.');
+        });
+    }
+
+    function showToast() {
+        const toast = document.getElementById("toast");
+        toast.classList.add("show");
+        
+        // 2.5초 후 토스트 숨김
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2500);
     }
     
     window.onload = () => {
