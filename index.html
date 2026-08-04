@@ -10,24 +10,23 @@
     <meta property="og:image" content="19.jpeg">
     
     <title>이시형 & 김유경 모바일 청첩장</title>
-    <!-- 폰트: 한글(명조체: 고운바탕), 영문(코모란트 가라몬드), 영문이름(사진 속 얇은 필기체: Pinyon Script) -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Gowun+Batang:wght@400;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <!-- 폰트: 한글(명조체: 고운바탕), 영문(고급스럽고 얇은 클래식 세리프: Bodoni Moda) -->
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400;1,500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f6f4ee; 
-            --text-color: #3b3a37;
-            --point-color: #8c8c8c;
-            --border-color: #dcd7ce;
+            /* 아주 맑고 깨끗한 화이트/크림 톤으로 변경 */
+            --bg-color: #ffffff; 
+            --text-color: #4a4543;
+            --point-color: #b5a999; /* 여리여리한 웜그레이/베이지 톤 */
+            --border-color: #f0ebe4;
             /* 폰트 변수 정의 */
             --font-serif-ko: 'Gowun Batang', serif;
-            --font-serif-en: 'Cormorant Garamond', serif;
-            --font-script-en: 'Pinyon Script', cursive; /* 첨부해주신 사진과 유사한 우아한 필기체 */
+            --font-serif-en: 'Bodoni Moda', serif;
         }
 
         body {
             margin: 0; padding: 0;
-            background-color: #ebebeb;
-            /* 전체 글씨체 고운바탕체로 통일 */
+            background-color: #f5f5f5;
             font-family: var(--font-serif-ko);
             color: var(--text-color);
             overflow-x: hidden;
@@ -37,9 +36,9 @@
         .wrap {
             max-width: 420px; margin: 0 auto;
             background-color: var(--bg-color);
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
             min-height: 100vh; position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05); overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.03); overflow: hidden;
+            /* 깔끔함을 위해 기존 노이즈 필터 제거 */
         }
 
         #snow-canvas {
@@ -52,159 +51,156 @@
 
         .bgm-btn {
             position: fixed; top: 20px; right: 20px;
-            z-index: 100; background: rgba(255,255,255,0.7); border: 1px solid var(--border-color);
+            z-index: 100; background: rgba(255,255,255,0.8); border: 1px solid var(--border-color);
             border-radius: 50%; width: 40px; height: 40px; cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05); font-size: 16px; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03); font-size: 16px; display: flex; align-items: center; justify-content: center;
         }
 
-        .section { padding: 70px 20px; text-align: center; border-bottom: 1px solid #efebe1; position: relative; z-index: 10; }
+        .section { padding: 75px 25px; text-align: center; border-bottom: 1px solid var(--border-color); position: relative; z-index: 10; }
         .section:last-child { border-bottom: none; }
+        
         .section-title { 
             font-family: var(--font-serif-en); 
-            font-variant: small-caps; 
-            font-size: 18px; letter-spacing: 4px; margin-bottom: 40px; color: #5a5750; 
+            font-size: 16px; letter-spacing: 6px; margin-bottom: 45px; color: #7a756e; 
+            text-transform: uppercase;
         }
         
-        /* 한글 전용 섹션 타이틀 (강제 적용) */
+        /* 한글 전용 섹션 타이틀 */
         .section-title.ko-title {
-            font-family: 'Gowun Batang', serif !important;
-            font-size: 20px !important;
+            font-family: var(--font-serif-ko) !important;
+            font-size: 18px !important;
             letter-spacing: 2px !important;
             font-weight: 400 !important;
+            color: #5c5752;
         }
 
-        /* 메인 사진: 가로 화면에 꽉 차게 */
+        /* 메인 사진 */
         .main-photo-full-width {
             width: 100%; 
             height: auto;
             border-radius: 0; 
             margin: 0; 
             display: block;
-            filter: sepia(0.15) contrast(0.95); 
+            filter: sepia(0.05) contrast(0.98); /* 색감을 조금 더 맑게 조정 */
         }
 
         .main-section-no-padding { padding-left: 0; padding-right: 0; }
 
-        /* 영문 이름 스타일 수정 (사진 참조: Pinyon Script, 소문자 적용) */
+        /* 영문 이름 - 우아하고 여리여리한 세리프 이탤릭체로 변경 */
         .names-stylized {
-            font-family: var(--font-script-en);
-            font-size: 60px; /* 폰트 특성상 조금 커야 예쁨 */
-            color: #1a1a1a;
-            margin: 15px 0;
-            text-transform: lowercase; /* 사진처럼 소문자로 강제 변환 */
-            font-weight: normal;
+            font-family: var(--font-serif-en);
+            font-style: italic;
+            font-size: 38px;
+            color: #332f2d;
+            margin: 20px 0;
+            text-transform: lowercase;
+            font-weight: 400;
+            letter-spacing: 1px;
         }
 
         .invitation-en-title {
-            font-family: var(--font-serif-en); font-variant: small-caps;
-            font-size: 14px; letter-spacing: 1px; color: #666; line-height: 1.8;
-            margin-bottom: 40px;
+            font-family: var(--font-serif-en);
+            font-size: 13px; letter-spacing: 2px; color: #999; line-height: 1.8;
+            margin-bottom: 40px; text-transform: uppercase;
         }
-        .greeting-text { line-height: 2.4; font-size: 15px; margin-bottom: 50px; color: #444; font-weight: 400; }
-        .parents-box { font-size: 16px; line-height: 2.2; font-weight: 400; }
-        .parents-box .relation { display: inline-block; width: 50px; color: var(--point-color); font-size: 14px; }
+        .greeting-text { line-height: 2.5; font-size: 15px; margin-bottom: 55px; color: #555; font-weight: 400; }
+        .parents-box { font-size: 15px; line-height: 2.3; font-weight: 400; color: #444; }
+        .parents-box .relation { display: inline-block; width: 45px; color: #999; font-size: 13px; }
 
-        .calendar { width: 100%; max-width: 300px; margin: 0 auto; text-align: center; font-family: var(--font-serif-en); }
-        .cal-month { font-size: 24px; margin-bottom: 20px; font-variant: small-caps; letter-spacing: 2px; }
-        .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; font-size: 14px; color: #666; }
-        .cal-grid .d-day { background-color: #c2b8a3; border-radius: 50%; width: 26px; height: 26px; line-height: 26px; margin: 0 auto; color: #fff; font-weight: bold; }
-        .d-day-counter { margin-top: 30px; font-size: 15px; letter-spacing: 1px; color: #7a7364; font-family: var(--font-serif-ko); }
+        .calendar { width: 100%; max-width: 280px; margin: 0 auto; text-align: center; font-family: var(--font-serif-en); }
+        .cal-month { font-size: 20px; margin-bottom: 25px; letter-spacing: 4px; text-transform: uppercase; color: #4a4543; }
+        .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 14px 10px; font-size: 14px; color: #888; }
+        .cal-grid .d-day { background-color: #e3ddd3; border-radius: 50%; width: 28px; height: 28px; line-height: 28px; margin: 0 auto; color: #5c564d; font-weight: 500; }
+        .d-day-counter { margin-top: 35px; font-size: 14px; letter-spacing: 1px; color: #7a7364; font-family: var(--font-serif-ko); }
         
         .location-info-clickable {
-            font-size: 14px;
-            line-height: 2;
-            margin-top: 20px;
-            text-align: center;
-            color: #555;
-            cursor: pointer;
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.4);
-            border-radius: 6px;
+            font-size: 14px; line-height: 2.2; margin-top: 20px; text-align: center; color: #555;
+            cursor: pointer; border: 1px solid var(--border-color); padding: 25px 20px;
+            background-color: #faf9f7; border-radius: 4px; transition: all 0.3s ease;
         }
 
         .account-btn {
-            width: 100%; padding: 15px; margin-bottom: 10px; background-color: transparent;
+            width: 100%; padding: 18px 15px; margin-bottom: 10px; background-color: #faf9f7;
             border: 1px solid var(--border-color); text-align: left; 
-            font-family: 'Gowun Batang', serif !important; /* 강제 적용 */
-            cursor: pointer; display: flex; justify-content: space-between; color: var(--text-color); font-size: 15px;
+            font-family: var(--font-serif-ko) !important;
+            cursor: pointer; display: flex; justify-content: space-between; color: var(--text-color); font-size: 14px;
+            border-radius: 4px;
         }
         .account-content {
-            display: none; padding: 20px; background-color: rgba(255,255,255,0.4); border: 1px solid var(--border-color);
-            border-top: none; margin-top: -10px; margin-bottom: 20px; font-size: 14px; text-align: left; line-height: 1.8;
-            font-family: 'Gowun Batang', serif !important; /* 강제 적용 */
+            display: none; padding: 20px; background-color: #fff; border: 1px solid var(--border-color);
+            border-top: none; margin-top: -14px; margin-bottom: 20px; font-size: 13px; text-align: left; line-height: 1.8;
+            font-family: var(--font-serif-ko) !important; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;
         }
         .acc-row {
             display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px dashed #dcd7ce; padding: 12px 0;
+            border-bottom: 1px dashed #eee; padding: 14px 0;
         }
-        .acc-row:last-child { border-bottom: none; }
-        .acc-name { font-weight: 700; margin-bottom: 4px; }
-        .acc-num { color: #666; }
+        .acc-row:last-child { border-bottom: none; padding-bottom: 0; }
+        .acc-name { font-weight: 700; color: #555; margin-bottom: 4px; display: inline-block; width: 120px; }
+        .acc-num { color: #777; }
 
         /* 갤러리 */
         .gallery-wrapper { width: 100%; }
         .gallery-main {
-            width: 100%; margin-bottom: 15px; overflow: hidden; border-radius: 4px;
+            width: 100%; margin-bottom: 15px; overflow: hidden; border-radius: 2px;
             display: flex; justify-content: center; align-items: center; background-color: transparent;
         }
         .gallery-main img {
-            width: 100%; height: auto; object-fit: contain; cursor: zoom-in; filter: sepia(0.1) contrast(0.95); border-radius: 4px;
+            width: 100%; height: auto; object-fit: contain; cursor: zoom-in; filter: sepia(0.05) contrast(0.98); border-radius: 2px;
         }
         .gallery-thumbs {
-            display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory;
+            display: flex; gap: 8px; overflow-x: auto; padding-bottom: 15px; scroll-snap-type: x mandatory;
         }
         .gallery-thumbs::-webkit-scrollbar { display: none; }
         .gallery-thumbs img {
-            width: 70px; height: 70px; object-fit: cover; border-radius: 4px; cursor: pointer; opacity: 0.5; transition: all 0.2s; scroll-snap-align: start;
+            width: 65px; height: 65px; object-fit: cover; border-radius: 2px; cursor: pointer; opacity: 0.4; transition: all 0.3s; scroll-snap-align: start;
         }
-        .gallery-thumbs img.active { opacity: 1; box-shadow: 0 0 0 2px #888; }
+        .gallery-thumbs img.active { opacity: 1; box-shadow: 0 0 0 1px #a8a29e; }
 
         .lightbox {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.95); z-index: 10000; justify-content: center; align-items: center; flex-direction: column;
+            background-color: rgba(255, 255, 255, 0.98); z-index: 10000; justify-content: center; align-items: center; flex-direction: column;
         }
         .lightbox.active { display: flex; }
-        .lightbox img { max-width: 95%; max-height: 85vh; object-fit: contain; user-select: none; }
-        .lightbox-close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 30px; cursor: pointer; padding: 10px; }
-        .lightbox-hint { color: #aaa; font-size: 12px; margin-top: 15px; font-family: var(--font-serif-ko);}
+        .lightbox img { max-width: 95%; max-height: 85vh; object-fit: contain; user-select: none; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .lightbox-close { position: absolute; top: 20px; right: 20px; color: #333; font-size: 35px; cursor: pointer; padding: 10px; font-weight: 300; }
+        .lightbox-hint { color: #888; font-size: 12px; margin-top: 20px; font-family: var(--font-serif-ko);}
 
-        /* 아이폰 문자 대화 형식 (우리의 이야기) CSS */
+        /* 우리의 이야기 (청순하고 차분한 톤으로 수정) */
         .chat-container {
-            background-color: #f2f2f7; /* 아이폰 배경색 */
-            border-radius: 20px;
-            padding: 25px 15px;
+            background-color: #faf9f7; /* 부드러운 웜그레이/베이지 톤 배경 */
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px 20px;
             margin-top: 20px;
             display: flex;
             flex-direction: column;
             gap: 16px;
-            /* 문자는 폰트를 고딕계열로 해야 진짜 아이폰 느낌이 납니다 */
-            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+            font-family: var(--font-serif-ko); /* 전체 무드에 맞춰 폰트 통일 */
         }
         .chat-date {
-            text-align: center; font-size: 12px; color: #8e8e93; margin-bottom: 10px; font-weight: 500;
+            text-align: center; font-size: 11px; color: #a8a29e; margin-bottom: 15px; font-weight: 500;
         }
         .chat-msg {
-            display: flex; flex-direction: column; max-width: 80%;
+            display: flex; flex-direction: column; max-width: 85%;
         }
         .chat-msg.left { align-self: flex-start; }
         .chat-msg.right { align-self: flex-end; align-items: flex-end; }
         
         .chat-name {
-            font-size: 11px; color: #8e8e93; margin-bottom: 4px; padding: 0 5px;
+            font-size: 11px; color: #999; margin-bottom: 6px; padding: 0 5px;
         }
         .chat-bubble {
-            padding: 10px 14px; border-radius: 18px; font-size: 14px; line-height: 1.4; word-break: keep-all; box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.5; word-break: keep-all; 
         }
         .chat-bubble.gray {
-            background-color: #e9e9eb; color: #000; border-bottom-left-radius: 4px;
+            background-color: #ffffff; color: #555; border: 1px solid var(--border-color); border-bottom-left-radius: 4px;
         }
         .chat-bubble.blue {
-            background-color: #007aff; color: #fff; border-bottom-right-radius: 4px; text-align: left;
+            background-color: #e6e1d8; /* 기존 쨍한 파란색 대신 부드러운 베이지/토프 컬러 적용 */
+            color: #444; border-bottom-right-radius: 4px; text-align: left;
         }
-        /* 각 질문 사이 간격 */
-        .chat-divider { height: 10px; }
+        .chat-divider { height: 15px; }
 
     </style>
 </head>
@@ -221,25 +217,23 @@
     <button class="bgm-btn" onclick="toggleBgmManual()" title="배경음악 재생/정지">🎵</button>
 
     <!-- 1. 메인 섹션 -->
-    <div class="section main-section-no-padding" style="padding-top: 60px;">
-        <div class="names-stylized" style="margin-bottom: 25px;">sihyung</div>
+    <div class="section main-section-no-padding" style="padding-top: 70px;">
+        <div class="names-stylized" style="margin-bottom: 30px;">sihyung</div>
         
         <!-- 메인 사진 -->
         <img src="1.jpeg" alt="메인 웨딩 사진" class="main-photo-full-width">
         
-        <div class="names-stylized" style="margin-top: 25px;">yukyeong</div>
+        <div class="names-stylized" style="margin-top: 30px;">yukyeong</div>
         
-        <p style="margin-top: 35px; font-size: 14px; color: #6b675e; letter-spacing: 1px; padding: 0 20px;">
-            2026. 12. 12. SAT 12:00 PM<br>
-            여수 소노캄 호텔<br>
-            (그랜드볼룸 1F)
+        <p style="margin-top: 40px; font-size: 13px; color: #7a756e; letter-spacing: 2px; padding: 0 20px; font-family: var(--font-serif-en); text-transform: uppercase;">
+            2026. 12. 12. SAT 12:00 PM<br><br>
+            <span style="font-family: var(--font-serif-ko); letter-spacing: 1px;">여수 소노캄 호텔 (그랜드볼룸 1F)</span>
         </p>
     </div>
 
     <!-- 2. 초대글 & 혼주 -->
     <div class="section">
-        <div class="section-title">INVITATION </div>
-        <div class="invitation-en-title"></div>
+        <div class="section-title">Invitation</div>
 
         <div class="greeting-text">
             무용하게 흩어지던 찰나가<br>
@@ -248,28 +242,27 @@
             영원을 맹세합니다.<br>
             <br>
             하나에서 둘이 되는 12월 12일,<br>
-            귀하신 분들을 초대하여 이 기쁨을 나누고자 합니다. 🌹
+            귀하신 분들을 초대하여 이 기쁨을 나누고자 합니다.
         </div>
         <div class="parents-box">
-            이창희 · 임은영 <span class="relation">의 아들</span> 🤵 시형<br>
-            최인숙 <span class="relation">의 &nbsp; 딸</span> 👰 유경
+            이창희 · 임은영 <span class="relation">의 아들</span> 시형<br>
+            최인숙 <span class="relation">의 &nbsp; 딸</span> 유경
         </div>
     </div>
 
     <!-- 3. 계좌번호 -->
     <div class="section">
-        <!-- 마음 전하실 곳 텍스트 글씨체를 고운바탕체로 확실하게 클래스 지정하여 강제 적용 -->
-        <div class="section-title ko-title">마음 전하실 곳 🫶🏼</div>
-        <p style="font-size: 14px; color: #888; margin-bottom: 30px; font-family: 'Gowun Batang', serif !important;">참석이 어려우신 분들을 위해<br>계좌번호를 기재하였습니다.</p>
+        <div class="section-title ko-title">마음 전하실 곳</div>
+        <p style="font-size: 13px; color: #999; margin-bottom: 35px; line-height: 1.8;">참석이 어려우신 분들을 위해<br>계좌번호를 기재하였습니다.</p>
         
-        <button class="account-btn" onclick="toggleAccount('groom-acc')">🤵 신랑측 마음 전하는 곳 <span>▼</span></button>
+        <button class="account-btn" onclick="toggleAccount('groom-acc')">신랑측 마음 전하는 곳 <span style="color:#ccc; font-size:10px;">▼</span></button>
         <div id="groom-acc" class="account-content">
             <div class="acc-row"><div class="acc-details"><span class="acc-name">신랑 이시형</span> <span class="acc-num">국민 01024767783</span></div></div>
             <div class="acc-row"><div class="acc-details"><span class="acc-name">신랑 아버지 이창희</span> <span class="acc-num">국민 01024767783</span></div></div>
             <div class="acc-row"><div class="acc-details"><span class="acc-name">신랑 어머니 임은영</span> <span class="acc-num">국민 01024767783</span></div></div>
         </div>
 
-        <button class="account-btn" onclick="toggleAccount('bride-acc')">👰 신부측 마음 전하는 곳 <span>▼</span></button>
+        <button class="account-btn" onclick="toggleAccount('bride-acc')">신부측 마음 전하는 곳 <span style="color:#ccc; font-size:10px;">▼</span></button>
         <div id="bride-acc" class="account-content">
             <div class="acc-row"><div class="acc-details"><span class="acc-name">신부 김유경</span> <span class="acc-num">국민 01024767783</span></div></div>
             <div class="acc-row"><div class="acc-details"><span class="acc-name">신부 어머니 최인숙</span> <span class="acc-num">국민 01024767783</span></div></div>
@@ -294,39 +287,39 @@
 
     <!-- 5. 지도 -->
     <div class="section">
-        <div class="section-title">LOCATION</div>
+        <div class="section-title">Location</div>
         
         <a href="https://map.naver.com/p/search/%EC%97%AC%EC%88%98%20%EC%86%8C%EB%85%B8%EC%BA%BC" target="_blank" title="네이버 지도로 길찾기" style="text-decoration: none; display: block; width: 100%; height: auto;">
             <div class="location-info-clickable">
-                <strong>여수 소노캄 호텔</strong><br>
-                (그랜드볼룸 1F)<br>
+                <strong style="color: #444; font-size: 15px;">여수 소노캄 호텔</strong><br>
+                <span style="color: #888; font-size: 13px;">(그랜드볼룸 1F)</span><br>
                 전남 여수시 오동도로 111 (수정동)<br><br>
-                🚅 <strong>KTX/SRT 이용 시</strong><br>
+                <span style="color:#b5a999; font-size:12px;">●</span> <strong>KTX/SRT 이용 시</strong><br>
                 여수엑스포역 하차 후 택시 이용 (약 5분)<br><br>
-                🚌 <strong>고속버스 이용 시</strong><br>
+                <span style="color:#b5a999; font-size:12px;">●</span> <strong>고속버스 이용 시</strong><br>
                 여수종합버스터미널 하차 후 택시 이용 (약 10분)<br><br>
-                🚗 <strong>자가용 이용 시</strong><br>
+                <span style="color:#b5a999; font-size:12px;">●</span> <strong>자가용 이용 시</strong><br>
                 호텔 내 주차장 이용 가능
             </div>
         </a>
-        <p style="font-size: 12px; color: #a39c8f; margin-top: 15px; margin-bottom: 20px; letter-spacing: 0.5px;">(오시는 길을 클릭하시면 네이버 지도로 연결됩니다)</p>
+        <p style="font-size: 12px; color: #b5a999; margin-top: 20px; letter-spacing: 0.5px;">(오시는 길을 클릭하시면 네이버 지도로 연결됩니다)</p>
     </div>
 
     <!-- 6. 갤러리 -->
     <div class="section">
-        <div class="section-title">GALLERY</div>
+        <div class="section-title">Gallery</div>
         <div class="gallery-wrapper">
             <div class="gallery-main">
                 <img id="gallery-main-img" src="" alt="확대 보기" onclick="openLightbox(this.src)">
             </div>
             <div class="gallery-thumbs" id="gallery-thumbs"></div>
         </div>
-        <p style="font-size: 12px; color: #a39c8f; margin-top: 15px;">(사진을 클릭하시면 확대됩니다)</p>
+        <p style="font-size: 12px; color: #b5a999; margin-top: 20px;">(사진을 클릭하시면 확대됩니다)</p>
     </div>
 
-    <!-- 7. 우리의 이야기 (아이폰 문자 스타일) -->
+    <!-- 7. 우리의 이야기 -->
     <div class="section">
-        <div class="section-title" style="margin-bottom: 10px;">OUR STORY</div>
+        <div class="section-title" style="margin-bottom: 20px;">Our Story</div>
         
         <div class="chat-container">
             <div class="chat-date">오늘 오후 12:12</div>
@@ -336,78 +329,78 @@
                 <div class="chat-bubble gray">Q1. 서로의 첫 인상은 어땠나요? 🤔</div>
             </div>
             <div class="chat-msg right">
-                <div class="chat-name">시형 🤵</div>
-                <div class="chat-bubble blue">처음 본 순간부터 환하게 웃는 미소가 너무 예뻤어! ✨</div>
+                <div class="chat-name">시형</div>
+                <div class="chat-bubble blue">첫눈에 반한거 다 알고 잇다 이시헝</div>
             </div>
             <div class="chat-msg right">
-                <div class="chat-name">유경 👰</div>
-                <div class="chat-bubble blue">참 다정하고 듬직한 사람이라고 생각했지 😊</div>
+                <div class="chat-name">유경</div>
+                <div class="chat-bubble blue">개그맨이 나온 줄 알았어! 🤣 깔깔댄 기억 뿐이야. 그만큼 첫 만남부터 너무 즐거웠어😌</div>
             </div>
             
             <div class="chat-divider"></div>
 
-            <!-- 질문 2 (새로 추가) -->
+            <!-- 질문 2 -->
             <div class="chat-msg left">
-                <div class="chat-bubble gray">Q2. 서로의 취향이 보이는 책이나 음악 추천! 📚🎵</div>
+                <div class="chat-bubble gray">Q2. 서로의 취향이 보이는 책이나 음악 추천! 📚🎶</div>
             </div>
             <div class="chat-msg right">
-                <div class="chat-name">시형 🤵</div>
-                <div class="chat-bubble blue">우리가 좋아하는 영화 '어바웃 타임' OST! 들을 때마다 네 생각 나 🎧</div>
+                <div class="chat-name">시형</div>
+                <div class="chat-bubble blue">이시헝 트렌트코리아 이런거 하지 마라</div>
             </div>
             <div class="chat-msg right">
-                <div class="chat-name">유경 👰</div>
-                <div class="chat-bubble blue">나는 베르나르 뷔페 화집! 내 취향을 함께 즐겨줘서 늘 고마워 🎨</div>
+                <div class="chat-name">유경</div>
+                <div class="chat-bubble blue">엄선하고 엄선한.. 지소쿠리클럽-Then Tonight, 선셋 롤러코스터-Piccolo Amore, 이문세-깊은 밤을 날아서, 스미카-Summer Vacation🎧</div>
             </div>
 
             <div class="chat-divider"></div>
 
-            <!-- 질문 3 (기존 2번) -->
+            <!-- 질문 3 -->
             <div class="chat-msg left">
-                <div class="chat-bubble gray">Q3. 함께하는 취미는 무엇인가요? 👩‍❤️‍👨</div>
+                <div class="chat-bubble gray">Q3. 함께하는 취미는 무엇인가요? 👨‍🎨👩‍🎨</div>
             </div>
             <div class="chat-msg right">
-                <div class="chat-name">시형 🤵</div>
-                <div class="chat-bubble blue">주말마다 우리 귀여운 타네랑 같이 산책하고 예쁜 카페 가기 🐶☕️</div>
+                <div class="chat-name">시형</div>
+                <div class="chat-bubble blue">전시회 같이 본거 ㅎㅎ</div>
             </div>
             <div class="chat-msg right">
-                <div class="chat-name">유경 👰</div>
-                <div class="chat-bubble blue">산책 다녀와서 셋이 나란히 누워 쉬는 시간이 제일 행복해 💛</div>
+                <div class="chat-name">유경</div>
+                <div class="chat-bubble blue">여행도! 필리핀🇵🇭, 태국🇹🇭, 이집트🇪🇬 다녀왔지! 사하라사막에서 본 은하수는 평생을 곱씹어도 모자라🌌</div>
             </div>
 
             <div class="chat-divider"></div>
 
-            <!-- 질문 4 (기존 3번) -->
+            <!-- 질문 4 -->
             <div class="chat-msg left">
                 <div class="chat-bubble gray">Q4. 신혼여행은 어디로 가시나요? ✈️</div>
             </div>
             <div class="chat-msg right">
-                <div class="chat-name">시형 🤵</div>
-                <div class="chat-bubble blue">우리가 그토록 기대하던 프랑스 파리와 프로방스로 떠납니다! ✈️</div>
+                <div class="chat-name">시형</div>
+                <div class="chat-bubble blue">우리가 좋아하는 화가 "베르나르 뷔페"의 생애를 따라 프랑스 파리~투르투르(남프랑스)로 갑니다🇫🇷</div>
             </div>
             <div class="chat-msg right">
-                <div class="chat-name">유경 👰</div>
-                <div class="chat-bubble blue">가서 낭만적인 풍경도 보고 맛있는 것도 잔뜩 먹고 오자 🇫🇷</div>
+                <div class="chat-name">유경</div>
+                <div class="chat-bubble blue">가서 낭만적인 풍경도 보고 맛있는 것도 잔뜩 먹고 오자🌹</div>
             </div>
 
             <div class="chat-divider"></div>
 
-            <!-- 질문 5 (기존 4번) -->
+            <!-- 질문 5 -->
             <div class="chat-msg left">
-                <div class="chat-bubble gray">Q5. 앞으로의 우리집 가훈은? 🏡</div>
+                <div class="chat-bubble gray">Q5. 우리집 가훈은?</div>
             </div>
             <div class="chat-msg right">
-                <div class="chat-name">시형 🤵</div>
-                <div class="chat-bubble blue">서로에게 세상에서 가장 좋은 친구가 되어주기 👫</div>
+                <div class="chat-name">시형</div>
+                <div class="chat-bubble blue">어쩌고 저쩌고</div>
             </div>
             <div class="chat-msg right">
-                <div class="chat-name">유경 👰</div>
-                <div class="chat-bubble blue">매일매일 사소한 것에도 웃음이 끊이지 않는 따뜻한 집 만들기 ❤️</div>
+                <div class="chat-name">유경</div>
+                <div class="chat-bubble blue">다정한 가정🫂 우리의 다정함이 우리 가정에, 그리고 주위에 따뜻한 온기가 되길 바라요.</div>
             </div>
             
         </div>
     </div>
 
-    <!-- 사진 확대 팝업 -->
+    <!-- 사진 확대 팝업 (클릭 시 닫을 땐 배경이 더 밝고 깨끗하게) -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
         <img id="lightbox-img" src="" alt="확대된 사진">
@@ -417,27 +410,27 @@
 </div>
 
 <script>
-    // --- 눈 내리는 효과 ---
+    // --- 눈 내리는 효과 (깨끗한 화이트 배경에 맞게 아주 은은하게 조정) ---
     const canvas = document.getElementById('snow-canvas');
     const ctx = canvas.getContext('2d');
     let width = canvas.width = document.querySelector('.wrap').offsetWidth;
     let height = canvas.height = document.querySelector('.wrap').scrollHeight;
     let particles = [];
     
-    for(let i=0; i<40; i++) {
+    for(let i=0; i<30; i++) {
         particles.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            r: Math.random() * 2.5 + 1,
+            r: Math.random() * 2 + 0.5,
             d: Math.random() * 50 
         });
     }
 
     function drawSnow() {
         ctx.clearRect(0,0,width,height);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.fillStyle = 'rgba(230, 225, 215, 0.6)'; /* 은은한 베이지/화이트 눈송이 */
         ctx.beginPath();
-        for(let i=0; i<40; i++) {
+        for(let i=0; i<30; i++) {
             let p = particles[i];
             ctx.moveTo(p.x, p.y);
             ctx.arc(p.x, p.y, p.r, 0, Math.PI*2, true);
@@ -449,7 +442,7 @@
     let angle = 0;
     function updateSnow() {
         angle += 0.01;
-        for(let i=0; i<40; i++) {
+        for(let i=0; i<30; i++) {
             let p = particles[i];
             p.y += Math.cos(angle + p.d) + 1 + p.r/2;
             p.x += Math.sin(angle) * 1.5;
@@ -469,10 +462,11 @@
     }
     setInterval(drawSnow, 33);
 
-    // --- 갤러리 슬라이더 로직 ---
+    // --- 갤러리 사진 3, 4, 8번 제외 반영 ---
     const galleryFiles = [];
     for (let i = 2; i <= 26; i++) {
-        if (i !== 8) { // 8번 사진 제외
+        // 3번, 4번, 8번 사진을 제외합니다.
+        if (i !== 3 && i !== 4 && i !== 8) { 
             galleryFiles.push(i + ".jpeg");
         }
     }
@@ -480,7 +474,9 @@
     const galleryMainImg = document.getElementById('gallery-main-img');
     const galleryThumbs = document.getElementById('gallery-thumbs');
 
-    galleryMainImg.src = galleryFiles[0];
+    if(galleryFiles.length > 0) {
+        galleryMainImg.src = galleryFiles[0];
+    }
 
     galleryFiles.forEach((filename, index) => {
         const thumb = document.createElement('img');
@@ -528,7 +524,7 @@
         }
     }
 
-    // --- 기타 기능들 ---
+    // --- 디데이 계산 ---
     function calculateDday() {
         const weddingDate = new Date("2026-12-12T12:00:00+09:00").getTime();
         const now = new Date().getTime();
