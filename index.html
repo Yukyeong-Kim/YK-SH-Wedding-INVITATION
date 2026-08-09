@@ -224,6 +224,22 @@
         }
         .toast-msg.show { visibility: visible; opacity: 1; bottom: 50px; }
 
+        /* 맛집 지도 (Yeosu Tour) 스타일 */
+        .tour-header { font-size: 14px; color: #7a756e; margin-bottom: 35px; line-height: 1.6; }
+        .tour-category { font-size: 16px; font-weight: 700; color: #4a4543; margin: 40px 0 15px; text-align: left; border-bottom: 1px solid #f0ebe4; padding-bottom: 8px;}
+        .tour-list { display: flex; flex-direction: column; gap: 15px; text-align: left; }
+        .tour-card { background-color: #faf9f7; border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; }
+        .tour-title { font-size: 15px; font-weight: 700; color: #444; margin-bottom: 8px; display: flex; align-items: center; gap: 5px; }
+        .tour-desc { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 15px; word-break: keep-all; }
+        .tour-btn-group { display: flex; gap: 6px; }
+        .tour-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0 12px; height: 28px;
+            background-color: #fff; border: 1px solid #e1e1e1; border-radius: 14px;
+            font-size: 11px; color: #555; text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .tour-btn:hover { background-color: #f5f5f5; }
     </style>
 </head>
 <body>
@@ -353,9 +369,9 @@
             <div class="venue-phone">(그랜드볼룸 1F)</div>
             
             <div class="map-app-btn-group">
-                <a href="https://map.naver.com/p/search/%EC%97%AC%EC%88%98%20%EC%86%8C%EB%85%B8%EC%BA%BC" target="_blank" class="map-app-btn" title="네이버 지도로 열기">네이버 지도</a>
-                <a href="https://map.kakao.com/?q=%EC%97%AC%EC%88%98%20%EC%86%8C%EB%85%B8%EC%BA%BC" target="_blank" class="map-app-btn" title="카카오맵으로 열기">카카오맵</a>
-                <a href="https://tmap.life/46f338d3" target="_blank" class="map-app-btn" title="티맵으로 열기">티맵</a>
+                <a href="https://map.naver.com/p/search/여수%20소노캄" target="_blank" class="map-app-btn" title="네이버 지도로 열기">네이버 지도</a>
+                <a href="https://map.kakao.com/?q=여수%20소노캄" target="_blank" class="map-app-btn" title="카카오맵으로 열기">카카오맵</a>
+                <a href="tmap://search?name=여수%20소노캄" class="map-app-btn" title="티맵으로 열기">티맵</a>
             </div>
 
             🚅 <strong>KTX/SRT 이용 시</strong><br>
@@ -457,6 +473,115 @@
         </div>
     </div>
 
+    <!-- 8. 여수 맛집 투어 -->
+    <div class="section">
+        <div class="section-title" style="margin-bottom: 10px;">Yeosu Tour</div>
+        <div class="tour-header">
+            여수 원주민인 신부가 추천하는 찐 맛집 지도 👩‍🍳💖<br>
+            귀한 걸음 해주신 만큼, 여수의 맛을 가득 느끼고 가세요!
+        </div>
+
+        <!-- 식당 카테고리 -->
+        <div class="tour-category">🍽️ 식당 추천</div>
+        <div class="tour-list">
+            <div class="tour-card">
+                <div class="tour-title">🦀 두꺼비게장</div>
+                <div class="tour-desc">여수하면 게장! 매콤 달달한 꽃게 정식 강력 추천해요.</div>
+                <div class="tour-btn-group">
+                    <a href="https://map.naver.com/p/search/여수%20두꺼비게장" target="_blank" class="tour-btn">네이버 지도</a>
+                    <a href="https://map.kakao.com/?q=여수%20두꺼비게장" target="_blank" class="tour-btn">카카오맵</a>
+                    <a href="tmap://search?name=여수%20두꺼비게장" class="tour-btn">티맵</a>
+                </div>
+            </div>
+            <div class="tour-card">
+                <div class="tour-title">🥢 화물식당</div>
+                <div class="tour-desc">여긴 다 맛있어요! 야들야들 보쌈, 매콤한 아구찜, 새콤한 서대회 추천합니다.</div>
+                <div class="tour-btn-group">
+                    <a href="https://map.naver.com/p/search/여수%20화물식당" target="_blank" class="tour-btn">네이버 지도</a>
+                    <a href="https://map.kakao.com/?q=여수%20화물식당" target="_blank" class="tour-btn">카카오맵</a>
+                    <a href="tmap://search?name=여수%20화물식당" class="tour-btn">티맵</a>
+                </div>
+            </div>
+            <div class="tour-card">
+                <div class="tour-title">🐟 복춘식당</div>
+                <div class="tour-desc">성시경 먹을텐데 맛집 인증! 시원~한 아귀탕으로 속 풀고 가세요.</div>
+                <div class="tour-btn-group">
+                    <a href="https://map.naver.com/p/search/여수%20복춘식당" target="_blank" class="tour-btn">네이버 지도</a>
+                    <a href="https://map.kakao.com/?q=여수%20복춘식당" target="_blank" class="tour-btn">카카오맵</a>
+                    <a href="tmap://search?name=여수%20복춘식당" class="tour-btn">티맵</a>
+                </div>
+            </div>
+            <div class="tour-card">
+                <div class="tour-title">⛺ 서시장 포차 24번</div>
+                <div class="tour-desc">겨울이면 생각나는 낭만 포차. 꽃게탕 양이 많아서 4인 이상 추천해요. (꽃게탕 ➡️ 라면 ➡️ 죽 필수 코스 잊지 마세요!)</div>
+                <div class="tour-btn-group">
+                    <a href="https://map.naver.com/p/search/여수%20서시장%20포차%2024번" target="_blank" class="tour-btn">네이버 지도</a>
+                    <a href="https://map.kakao.com/?q=여수%20서시장%20포차%2024번" target="_blank" class="tour-btn">카카오맵</a>
+                    <a href="tmap://search?name=여수%20서시장%20포차%2024번" class="tour-btn">티맵</a>
+                </div>
+            </div>
+            <div class="tour-card">
+                <div class="tour-title">🥟 풀뿌리흑두부</div>
+                <div class="tour-desc">직접 만든 고소~한 손두부! 두부 보쌈 한 점 드셔보시면 반하실 거예요.</div>
+                <div class="tour-btn-group">
+                    <a href="https://map.naver.com/p/search/여수%20풀뿌리흑두부" target="_blank" class="tour-btn">네이버 지도</a>
+                    <a href="https://map.kakao.com/?q=여수%20풀뿌리흑두부" target="_blank" class="tour-btn">카카오맵</a>
+                    <a href="tmap://search?name=여수%20풀뿌리흑두부" class="tour-btn">티맵</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 베이커리/카페 카테고리 -->
+        <div class="tour-category">☕ 베이커리 & 카페</div>
+        <div class="tour-list">
+            <div class="tour-card">
+                <div class="tour-title">🍞 뛰뛰빵빵제빵소</div>
+                <div class="tour-desc">오픈 시간 맞춰서 가지 않으면 빵이 동나는 현지인 빵집이어요. (테이크아웃 전문점 🏃‍♀️)</div>
+                <div class="tour-btn-group">
+                    <a href="https://map.naver.com/p/search/여수%20뛰뛰빵빵제빵소" target="_blank" class="tour-btn">네이버 지도</a>
+                    <a href="https://map.kakao.com/?q=여수%20뛰뛰빵빵제빵소" target="_blank" class="tour-btn">카카오맵</a>
+                    <a href="tmap://search?name=여수%20뛰뛰빵빵제빵소" class="tour-btn">티맵</a>
+                </div>
+            </div>
+            <div class="tour-card">
+                <div class="tour-title">🥐 베이커리 샤워</div>
+                <div class="tour-desc">빵도 맛있고 커피도 완벽한 곳! 당 충전이 필요할 때 추천해요.</div>
+                <div class="tour-btn-group">
+                    <a href="https://map.naver.com/p/search/여수%20베이커리%20샤워" target="_blank" class="tour-btn">네이버 지도</a>
+                    <a href="https://map.kakao.com/?q=여수%20베이커리%20샤워" target="_blank" class="tour-btn">카카오맵</a>
+                    <a href="tmap://search?name=여수%20베이커리%20샤워" class="tour-btn">티맵</a>
+                </div>
+            </div>
+            <div class="tour-card">
+                <div class="tour-title">🥗 피어하우스</div>
+                <div class="tour-desc">커피도 맛있고 브런치도 팔아서 왠지 모르게 계속 가게 되는 카페여요. 깔끔하고 편안한 분위기 🌿</div>
+                <div class="tour-btn-group">
+                    <a href="https://map.naver.com/p/search/여수%20피어하우스" target="_blank" class="tour-btn">네이버 지도</a>
+                    <a href="https://map.kakao.com/?q=여수%20피어하우스" target="_blank" class="tour-btn">카카오맵</a>
+                    <a href="tmap://search?name=여수%20피어하우스" class="tour-btn">티맵</a>
+                </div>
+            </div>
+            <div class="tour-card">
+                <div class="tour-title">🌅 서목</div>
+                <div class="tour-desc">해 지는 시간 맞춰서 가면 환상적인 선셋 뷰가 펼쳐져요.. 신부의 최애 메뉴는 과일빙수랍니다 🍧</div>
+                <div class="tour-btn-group">
+                    <a href="https://map.naver.com/p/search/여수%20서목" target="_blank" class="tour-btn">네이버 지도</a>
+                    <a href="https://map.kakao.com/?q=여수%20서목" target="_blank" class="tour-btn">카카오맵</a>
+                    <a href="tmap://search?name=여수%20서목" class="tour-btn">티맵</a>
+                </div>
+            </div>
+            <div class="tour-card">
+                <div class="tour-title">☕ 와이드커피스탠드</div>
+                <div class="tour-desc">대형카페인데 대형카페 같지 않은, 아기자기 예쁘고 커피도 맛있는 곳! (피어하우스 사장님이 같이 운영하셔요 속닥속닥 🤫)</div>
+                <div class="tour-btn-group">
+                    <a href="https://map.naver.com/p/search/여수%20와이드커피스탠드" target="_blank" class="tour-btn">네이버 지도</a>
+                    <a href="https://map.kakao.com/?q=여수%20와이드커피스탠드" target="_blank" class="tour-btn">카카오맵</a>
+                    <a href="tmap://search?name=여수%20와이드커피스탠드" class="tour-btn">티맵</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 사진 확대 팝업 -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">&times;</span>
@@ -487,8 +612,8 @@
 
     function drawSnow() {
         ctx.clearRect(0,0,width,height);
-        // 하얀 배경에서도 조금 더 잘 보이도록 색상 톤을 낮추고 불투명도를 높임
-        ctx.fillStyle = 'rgba(205, 195, 185, 0.8)';
+        // 하얀 눈송이 색상 톤으로 변경
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
         ctx.beginPath();
         for(let i=0; i<particleCount; i++) {
             let p = particles[i];
